@@ -40,7 +40,7 @@
         .bindPopup(noaaPopup)
         .openPopup();
 
-      var duml = L.marker([34.716575768079984, -76.672221590615266])
+      var duml = L.marker([34.716575768079984, -76.672221590615266], {icon: greenIcon})
         .bindPopup(dumlPopup)
         .openPopup();
 
@@ -51,6 +51,17 @@
         var latlngs = [[34.733473666823485,-76.66870224258561],[34.73486635510266,-76.66430604584896],[34.736074470236396,-76.665547719736409],[34.736594630918979,-76.664524177748106],[34.735453633292671,-76.663097930715224],[34.737752407922144,-76.656184827449948],[34.737148350355277,-76.655580769883073],[34.729312381362838,-76.655010271069926],[34.728355956881963,-76.656117709942521],[34.727131062371363,-76.660933391100613],[34.727617664300233,-76.662124726857485],[34.731426582846879,-76.660010525373451],[34.73384281311435,-76.663701988282085],[34.73251724234261,-76.668232420033604]];
         var polygon = L.polygon(latlngs, {color: 'green'})
         .bindPopup("Gives air tours of Beaufort");
+
+        var greenIcon = new L.Icon({
+  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+//L.marker([51.5, -0.09], {icon: greenIcon}).addTo(map);
 
       var beaufortPhoto = L.tileLayer('./{z}/{x}/{y}.png', {
         minZoom: 12,
