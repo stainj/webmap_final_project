@@ -28,9 +28,29 @@
   <script>
       var map = L.map('map').setView([34.722711775, -76.661769677], 14.0);
 
-      var marker = L.marker([34.7182, -76.6638])
-        .bindPopup("Beaufort")
+      var museumPopup = "Maritime Museum has artifacts from Blackbeard’s wrecked flagship and Queen Anne’s Revenge<br/><img src='https://becauseiamuniquelyandwonderfullymade.files.wordpress.com/2012/11/1.jpg'width='300px'/>";
+      var noaaPopup = "NOAA Beaufort Laboratory conducts important marine science research<br/><img src='https://bloximages.chicago2.vip.townnews.com/carolinacoastonline.com/content/tncms/assets/v3/editorial/2/c4/2c402dbc-aabf-11e3-8f7d-0019bb2963f4/5321c687e02df.image.jpg'width='300px'/>";
+      var dumlPopup = "Duke University Marine Lab was were I stayed while I took classes at UNC Institute of Marine Sciences in Morehead City in the Fall semester of 2019 <br/><img src='https://tse2.mm.bing.net/th?id=OIP.rgeewND7ib12U3g6ngmeMQEsB2&pid=Api'width='300px'/>";
+
+      var museum = L.marker([34.717891277906993, -76.666228920307006])
+        .bindPopup(museumPopup)
         .openPopup();
+      
+      var noaa = L.marker([34.719177761782781, -76.67217859575787])
+        .bindPopup(noaaPopup)
+        .openPopup();
+
+      var duml = L.marker([34.716575768079984, -76.672221590615266])
+        .bindPopup(dumlPopup)
+        .openPopup();
+
+        var latlngs2 = [[34.722554016974136,-76.670090568920031],[34.722514725389146,-76.667988469123415]];
+        var polyline = L.polyline(latlngs2, {color: 'red'})
+        .bindPopup("The bridge is not there anymore");
+      
+        var latlngs = ([[34.733473666823485,-76.66870224258561],[34.73486635510266,-76.66430604584896],[34.736074470236396,-76.665547719736409],[34.736594630918979,-76.664524177748106],[34.735453633292671,-76.663097930715224],[34.737752407922144,-76.656184827449948],[34.737148350355277,-76.655580769883073],[34.729312381362838,-76.655010271069926],[34.728355956881963,-76.656117709942521],[34.727131062371363,-76.660933391100613],[34.727617664300233,-76.662124726857485],[34.731426582846879,-76.660010525373451],[34.73384281311435,-76.663701988282085],[34.73251724234261,-76.668232420033604]]);
+        var polygon = L.polygon(latlngs, {color: 'green'})
+        .bindPopup("Gives air tours of Beaufort");
 
       var beaufortPhoto = L.tileLayer('./{z}/{x}/{y}.png', {
         minZoom: 12,
@@ -43,17 +63,23 @@
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
 });
 
+      var OSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {});
 
       var tiles = {
+        "Open Street Map": OSM,
         "Esri World Street Map": EWSM,
         "Beaufort photo":beaufortPhoto
       }
 
-      var vector = {
-       "center":marker
+      var vectors = {
+       "Maritime Museum": museum, 
+       "NOAA Beaufort Laboratory": noaa,
+       "Duke University Marine Lab": duml,
+       "Michael J Smith Field Airport": polygon,
+       "Old Hwy 70 Bridge": polyline
       }
 
-      L.control.layers(tiles, vector).addTo(map);
+      L.control.layers(tiles, vectors).addTo(map);
 
   </script>
 </body>
