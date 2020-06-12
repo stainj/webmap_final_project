@@ -35,19 +35,29 @@
       var museum = L.marker([34.717891277906993, -76.666228920307006])
         .bindPopup(museumPopup)
         .openPopup();
+
+        var goldIcon = L.icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+        });
       
-      var noaa = L.marker([34.719177761782781, -76.67217859575787])
+      var noaa = L.marker([34.719177761782781, -76.67217859575787], {icon: goldIcon})
         .bindPopup(noaaPopup)
         .openPopup();
         
        var greenIcon = L.icon({
-  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+        });
+
       var duml = L.marker([34.716575768079984, -76.672221590615266], {icon: greenIcon})
         .bindPopup(dumlPopup)
         .openPopup();
